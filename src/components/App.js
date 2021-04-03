@@ -8,18 +8,19 @@ import Counter from "./counter/Counter";
 import Quote from "./quote/Quote";
 import SlideAnimation from "./test/SlideAnimation";
 import Todos from "./todos/Todos";
+import Caculator from "./caculator/Caculator";
 
 const App = () => {
   return (
     <Router history={history}>
       <Navbar />
-
       <Switch>
         <Route exact path="/">
           Home
         </Route>
         <Route exact path="/counter" component={Counter} />
         <Route exact path="/quotes" component={Quote} />
+        <Route exact path="/caculator" component={Caculator} />
         <Route exact path="/todos" component={Todos} />
         <Route exact path="/test" component={SlideAnimation} />
       </Switch>
