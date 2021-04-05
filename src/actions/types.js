@@ -17,3 +17,7 @@ export const TODOS_ALL = "TODOS_ALL";
 export const TODOS_ACTIVE = "TODOS_ACTIVE";
 export const TODOS_COMPLETED = "TODOS_COMPLETED";
 export const TODOS_CLEAR_ALL = "TODOS_CLEAR_ALL";
+
+// random users
+export const FETCH_USERS = "FETCH_USERS";
+export const CLEAR_USERS = "CLEAR_USERS";

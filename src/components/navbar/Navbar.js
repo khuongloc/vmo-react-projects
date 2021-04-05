@@ -67,9 +67,17 @@ const Navbar = () => {
         <Link
           onClick={() => setIsShow(false)}
           className="md:ml-2 md:mx-5 md:text-lg"
+          to="/random-users"
+        >
+          Random Users
+        </Link>
+
+        <Link
+          onClick={() => setIsShow(false)}
+          className="md:ml-2 md:mx-5 md:text-lg"
           to="/test"
         >
-          Test
+          Test Animation
         </Link>
       </div>
     </nav>

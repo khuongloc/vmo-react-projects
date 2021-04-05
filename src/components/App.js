@@ -9,6 +9,7 @@ import Quote from "./quote/Quote";
 import SlideAnimation from "./test/SlideAnimation";
 import Todos from "./todos/Todos";
 import Caculator from "./caculator/Caculator";
+import RandomUsers from "./test-trello/RandomUsers";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/quotes" component={Quote} />
         <Route exact path="/caculator" component={Caculator} />
         <Route exact path="/todos" component={Todos} />
+        <Route exact path="/random-users" component={RandomUsers} />
         <Route exact path="/test" component={SlideAnimation} />
       </Switch>
     </Router>

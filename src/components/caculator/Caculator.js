@@ -58,7 +58,11 @@ const Caculator = (props) => {
 
     // chua dau bang
     if (/=/.test(exp)) {
-      setExp(currVal + val);
+      if (typeOf(val) === "string") {
+        setExp(currVal + val);
+      } else {
+        setExp(val);
+      }
     }
 
     // ket thuc bang dau .
