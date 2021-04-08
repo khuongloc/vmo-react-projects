@@ -9,7 +9,7 @@ const UserCard = (props) => {
   useEffect(() => {
     const idTimerFist = setTimeout(() => {
       setPos(userRef.current.clientHeight * props.idx);
-    }, 700);
+    }, 100);
 
     return () => {
       clearTimeout(idTimerFist);
@@ -29,7 +29,7 @@ const UserCard = (props) => {
       } else {
         setIndex(index + 1);
       }
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearTimeout(timerId);
@@ -40,7 +40,7 @@ const UserCard = (props) => {
     <div
       ref={userRef}
       style={{ top: `${pos}px` }}
-      className="flex items-center border bg-gray-200 transition-all duration-700 w-full absolute"
+      className="flex items-center border bg-gray-200 transition-all duration-1000 w-full absolute"
     >
       <img
         src={props.picture.medium}
