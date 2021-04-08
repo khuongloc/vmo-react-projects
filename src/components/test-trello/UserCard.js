@@ -1,22 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const UserCard = (props) => {
-  const [isFade, setIsFade] = useState(false);
+  const [pos, setPos] = useState(0);
+  const [index, setIndex] = useState(Number(props.idx));
+
+  const userRef = useRef(null);
 
   useEffect(() => {
-    const fadeId = setTimeout(() => {
-      setIsFade(true);
-    }, 300);
+    const idTimerFist = setTimeout(() => {
+      setPos(userRef.current.clientHeight * props.idx);
+    }, 700);
+
     return () => {
-      clearTimeout(fadeId);
+      clearTimeout(idTimerFist);
     };
-  }, []);
+  }, [props.idx]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      if (index === props.total - 1) {
+        setPos(0);
+      } else {
+        setPos(userRef.current.clientHeight * (index + 1));
+      }
+
+      if (index === props.total - 1) {
+        setIndex(0);
+      } else {
+        setIndex(index + 1);
+      }
+    }, 2000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [index, props.total]);
 
   return (
     <div
-      className={`flex items-center border bg-gray-500 transform transition duration-300 ${
-        isFade ? "opacity-100" : "opacity-0"
-      }`}
+      ref={userRef}
+      style={{ top: `${pos}px` }}
+      className="flex items-center border bg-gray-200 transition-all duration-700 w-full absolute pb-1"
     >
       <img
         src={props.picture.medium}

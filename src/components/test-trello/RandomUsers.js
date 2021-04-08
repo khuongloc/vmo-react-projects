@@ -14,11 +14,11 @@ const RandomUsers = (props) => {
   const dispatch = useDispatch();
 
   const renderUsers = (users) => {
-    return users.map((user, index) => (
+    return users.map((user, idx) => (
       <UserCard
         key={user.login.uuid}
         total={users.length}
-        index={index}
+        idx={idx}
         {...user}
       />
     ));
@@ -50,7 +50,11 @@ const RandomUsers = (props) => {
     return <LoadingError errorMessage="Something went wrong!" />;
   }
 
-  return <div className="p-5 md:w-3/12 md:mx-auto">{renderUsers(users)}</div>;
+  return (
+    <div className="p-5 md:w-3/12 md:mx-auto relative mt-5">
+      {renderUsers(users)}
+    </div>
+  );
 };
 
 export default RandomUsers;
