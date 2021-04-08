@@ -51,7 +51,7 @@ const RandomUsers = (props) => {
   }
 
   return (
-    <div className="p-5 md:w-3/12 md:mx-auto relative mt-5">
+    <div className="mx-2 md:w-3/12 md:mx-auto relative mt-5">
       {renderUsers(users)}
     </div>
   );

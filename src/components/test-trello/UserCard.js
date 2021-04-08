@@ -40,7 +40,7 @@ const UserCard = (props) => {
     <div
       ref={userRef}
       style={{ top: `${pos}px` }}
-      className="flex items-center border bg-gray-200 transition-all duration-700 w-full absolute pb-1"
+      className="flex items-center border bg-gray-200 transition-all duration-700 w-full absolute"
     >
       <img
         src={props.picture.medium}
