@@ -20,13 +20,9 @@ const UserCard = (props) => {
     const timerId = setTimeout(() => {
       if (index === props.total - 1) {
         setPos(0);
-      } else {
-        setPos(userRef.current.clientHeight * (index + 1));
-      }
-
-      if (index === props.total - 1) {
         setIndex(0);
       } else {
+        setPos(userRef.current.clientHeight * (index + 1));
         setIndex(index + 1);
       }
     }, 1000);
