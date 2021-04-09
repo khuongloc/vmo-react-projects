@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { evaluate, typeOf } from "mathjs";
+import { evaluate, typeOf, format } from "mathjs";
 import Shell from "./Shell";
 
 const Caculator = (props) => {
@@ -29,9 +29,18 @@ const Caculator = (props) => {
       }
     }
 
-    // ket thuc bang 1 so
+    // ket thuc bang 1 so,
     if (/[0-9]+$/gim.test(exp)) {
-      setExp((exp) => exp + val);
+      // ket thuc bang 1 so double ?
+      if (val === ".") {
+        if (/[0-9]+[.][0-9]+$/gim.test(exp)) {
+          setExp((exp) => exp);
+        } else {
+          setExp((exp) => exp + val);
+        }
+      } else {
+        setExp((exp) => exp + val);
+      }
     }
 
     // ket thuc bang 1 toan tu
@@ -67,7 +76,6 @@ const Caculator = (props) => {
 
     // ket thuc bang dau .
     if (/[.]$/gim.test(exp)) {
-      console.log("dau cham");
       if (typeOf(val) === "number") {
         setExp((exp) => exp + val);
       }
@@ -81,8 +89,17 @@ const Caculator = (props) => {
 
   const onEval = () => {
     if (!/=/.test(exp) && exp !== "" && !/[-+*/]$/.test(exp)) {
-      setExp((exp) => `${exp}=${evaluate(exp)}`);
-      setCurrVal(evaluate(exp));
+      const result = evaluate(exp);
+      if (/[0-9]+[.][0-9]+0{10,}[1-9]$/gim.test(result)) {
+        setExp(
+          (exp) =>
+            `${exp}=${format(result, { notation: "fixed", precision: 1 })}`
+        );
+        setCurrVal(format(result, { notation: "fixed", precision: 1 }));
+      } else {
+        setExp((exp) => `${exp}=${result}`);
+        setCurrVal(result);
+      }
     }
   };
 
